@@ -1,7 +1,21 @@
 import React from 'react';
 import { Leaf, Cloud, TrendingUp, Globe, MapPin, Handshake, CircleDollarSign, ChevronRight, ArrowRight } from 'lucide-react';
 
-export const EmissionsPage: React.FC = () => {
+interface EmissionsHeroContent {
+  badge: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  primaryButton: string;
+  secondaryButton: string;
+  bannerImage: string;
+}
+
+interface EmissionsPageProps {
+  content: EmissionsHeroContent;
+}
+
+export const EmissionsPage: React.FC<EmissionsPageProps> = ({ content }) => {
   return (
     <div className="flex flex-col w-full min-h-screen">
       {/* Hero Section */}
@@ -10,29 +24,29 @@ export const EmissionsPage: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-surface-container rounded-full mb-8 border border-outline-variant/30">
               <Leaf className="w-4 h-4 text-secondary" />
-              <span className="text-xs font-semibold text-secondary uppercase tracking-wider">MRV Platform</span>
+              <span className="text-xs font-semibold text-secondary uppercase tracking-wider">{content.badge}</span>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary mb-6 tracking-tight leading-[1.1]">
-              Nông nghiệp Phát thải thấp
-              <span className="block text-secondary mt-3">Chuyển đổi Kinh tế Carbon</span>
+              {content.title}
+              <span className="block text-secondary mt-3">{content.subtitle}</span>
             </h1>
             <p className="text-lg text-on-surface-variant mb-10 max-w-xl leading-relaxed">
-              Công nghệ hiện đại cho đo lường Khí nhà kính (GHG) và hành động chống biến đổi khí hậu. Xây dựng nền tảng minh bạch để kết nối nỗ lực giảm phát thải với thị trường tài chính.
+              {content.description}
             </p>
             <div className="flex flex-wrap gap-4">
               <button className="bg-primary text-on-primary font-semibold px-8 py-3.5 rounded-full hover:bg-primary-container transition-colors flex items-center gap-2 shadow-md">
-                Khám phá Giải pháp
+                {content.primaryButton}
                 <ArrowRight className="w-5 h-5" />
               </button>
               <button className="bg-surface border-2 border-secondary text-secondary font-semibold px-8 py-3.5 rounded-full hover:bg-secondary-fixed transition-colors">
-                Xem Dữ liệu Báo cáo
+                {content.secondaryButton}
               </button>
             </div>
           </div>
           
           <div className="relative h-[450px] lg:h-[550px] rounded-3xl overflow-hidden bg-surface-container-high shadow-xl">
             <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDGz2GWR99GK9jETKsDkXH3-5YzJDbB0O-Zb412zuLXNdQgWg_R0dUg0HUeZexTILR3Zf4rydzm9Rzs2Br8ghB23il43Y3HO5T38DH0tMgYtiEJJEsLSCLHE7k0esMzCAq_wNdpMZWmc5iK_6j8ITGzZZurQ1KZ-H83hwB0hnPssmzgOI_3gX-0wieD9u3rfYnss259hM9OOpeN83fR9XGIsmotTGu2XHdK5QSteUYUKmLjKU9jLJbB_UgJ2hwCUOgvSBYAHol2qA" 
+              src={content.bannerImage} 
               alt="Agricultural fields with data overlay" 
               className="w-full h-full object-cover opacity-90 mix-blend-multiply"
             />
