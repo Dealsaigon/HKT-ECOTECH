@@ -3,7 +3,7 @@ require __DIR__ . '/../includes/db.php';
 require __DIR__ . '/../includes/functions.php';
 requireAdmin();
 
-$keys = ['site_name','hero_title','hero_subtitle','hero_description','hero_banner','cta_label'];
+$keys = ['site_name','hero_badge','hero_title','hero_subtitle','hero_description','hero_banner','cta_label','cta_secondary'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   foreach ($keys as $key) {
@@ -27,7 +27,11 @@ foreach($keys as $k){$values[$k]=getSetting($pdo,$k,'');}
 <form method="post">
 <?php foreach($keys as $key): ?>
   <label><?= htmlspecialchars($key) ?></label><br>
+  <?php if ($key === 'hero_description'): ?>
+  <textarea name="<?= htmlspecialchars($key) ?>" style="width:100%;padding:10px;min-height:120px"><?= htmlspecialchars($values[$key]) ?></textarea><br><br>
+  <?php else: ?>
   <input name="<?= htmlspecialchars($key) ?>" value="<?= htmlspecialchars($values[$key]) ?>" style="width:100%;padding:10px"><br><br>
+  <?php endif; ?>
 <?php endforeach; ?>
   <button type="submit" style="padding:10px 16px">Lưu</button>
 </form>
