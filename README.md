@@ -2,19 +2,37 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# HKT ECOTECH Website + CMS API cơ bản
 
-This contains everything you need to run your app locally.
+Dự án gồm:
+- **Frontend (React + Vite)** để hiển thị giao diện.
+- **Backend API (Express)** để cập nhật nội dung động như logo text, CTA, banner, headline... mà không cần sửa trực tiếp mã giao diện.
 
-View your app in AI Studio: https://ai.studio/apps/c8d6c227-98b6-42c2-9981-98f6d3640e59
+## Chạy local
 
-## Run Locally
+1. Cài dependencies:
+   ```bash
+   npm install
+   ```
+2. Chạy frontend:
+   ```bash
+   npm run dev
+   ```
+3. Chạy backend API (terminal khác):
+   ```bash
+   npm run dev:api
+   ```
 
-**Prerequisites:**  Node.js
+## CMS API cơ bản
 
+- `GET /api/content` : lấy toàn bộ nội dung website.
+- `PUT /api/content` : cập nhật toàn bộ nội dung website.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Dữ liệu được lưu tại: `data/site-content.json`.
+
+Ví dụ cập nhật nhanh:
+```bash
+curl -X PUT http://localhost:4000/api/content \
+  -H "Content-Type: application/json" \
+  --data @data/site-content.json
+```
