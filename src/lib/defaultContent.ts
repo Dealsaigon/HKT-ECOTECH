@@ -1,0 +1,22 @@
+import { SiteContent } from '../types/siteContent';
+
+export const defaultContent: SiteContent = {
+  brand: {
+    name: 'HKT ECOTECH',
+    logoIcon: 'leaf',
+  },
+  navbar: {
+    ctaLabel: 'Get Started',
+  },
+  emissionsHero: {
+    badge: 'MRV Platform',
+    title: 'Nông nghiệp Phát thải thấp',
+    subtitle: 'Chuyển đổi Kinh tế Carbon',
+    description:
+      'Công nghệ hiện đại cho đo lường Khí nhà kính (GHG) và hành động chống biến đổi khí hậu. Xây dựng nền tảng minh bạch để kết nối nỗ lực giảm phát thải với thị trường tài chính.',
+    primaryButton: 'Khám phá Giải pháp',
+    secondaryButton: 'Xem Dữ liệu Báo cáo',
+    bannerImage:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuCDGz2GWR99GK9jETKsDkXH3-5YzJDbB0O-Zb412zuLXNdQgWg_R0dUg0HUeZexTILR3Zf4rydzm9Rzs2Br8ghB23il43Y3HO5T38DH0tMgYtiEJJEsLSCLHE7k0esMzCAq_wNdpMZWmc5iK_6j8ITGzZZurQ1KZ-H83hwB0hnPssmzgOI_3gX-0wieD9u3rfYnss259hM9OOpeN83fR9XGIsmotTGu2XHdK5QSteUYUKmLjKU9jLJbB_UgJ2hwCUOgvSBYAHol2qA',
+  },
+};
