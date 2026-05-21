@@ -22,7 +22,12 @@ export const AIChatWidget: React.FC = () => {
   useEffect(() => {
     // Initialize chat when component mounts
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const apiKey = import.meta.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        return;
+      }
+
+      const ai = new GoogleGenAI({ apiKey });
       chatRef.current = ai.chats.create({
         model: 'gemini-3-flash-preview',
         config: {
