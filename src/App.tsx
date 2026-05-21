@@ -15,6 +15,8 @@ import { AIChatWidget } from './components/AIChatWidget';
 import { SiteContent } from './types/siteContent';
 import { defaultContent } from './lib/defaultContent';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
+
 export default function App() {
   const [activeTab, setActiveTab] = useState('solutions');
   const [content, setContent] = useState<SiteContent>(defaultContent);
@@ -22,10 +24,17 @@ export default function App() {
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/content');
+        const response = await fetch(`${API_BASE_URL}/api/content`);
         if (!response.ok) return;
-        const data = (await response.json()) as SiteContent;
-        setContent(data);
+
+        const data = (await response.json()) as Partial<SiteContent>;
+        if (!data?.brand || !data?.navbar || !data?.emissionsHero) return;
+
+        setContent({
+          brand: { ...defaultContent.brand, ...data.brand },
+          navbar: { ...defaultContent.navbar, ...data.navbar },
+          emissionsHero: { ...defaultContent.emissionsHero, ...data.emissionsHero },
+        });
       } catch {
         // fallback to bundled defaults if backend is not running
       }

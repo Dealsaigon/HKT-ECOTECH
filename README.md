@@ -36,3 +36,10 @@ curl -X PUT http://localhost:4000/api/content \
   -H "Content-Type: application/json" \
   --data @data/site-content.json
 ```
+
+## Deploy notes (tránh màn hình trắng)
+
+- Frontend mặc định gọi API theo đường dẫn tương đối `/api/content`.
+- Nếu API ở domain khác, set biến môi trường `VITE_API_BASE_URL` trước khi build.
+  - Ví dụ: `VITE_API_BASE_URL=https://api.hktecotech.com npm run build`
+- Nếu deploy **chỉ static hosting** (không chạy Node/Express), frontend vẫn chạy bằng dữ liệu mặc định, nhưng API cập nhật nội dung sẽ không hoạt động.
